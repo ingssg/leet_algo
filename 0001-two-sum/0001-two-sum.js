@@ -4,12 +4,10 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-  ans = [];
+  const hm = new Map();
   for (let i = 0; i < nums.length; i++) {
-    if(nums.slice(i+1).includes(target - nums[i])) {
-      ans.push(i, nums.indexOf(target - nums[i], i+1))
-      break;
-    }
+    if(hm.has(target-nums[i])) 
+      return [hm.get(target-nums[i]), i]
+    hm.set(nums[i], i)
   }
-  return ans;
 };
