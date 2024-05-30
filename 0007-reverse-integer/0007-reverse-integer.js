@@ -3,13 +3,17 @@
  * @return {number}
  */
 var reverse = function (x) {
-  let str_x = x.toString().split("");
-  let [l, r] = [0, str_x.length - 1];
-  if (x < 0) l++;
-  while (l <= r) {
-    [str_x[l++], str_x[r--]] = [str_x[r], str_x[l]];
+  let [reverse, temp] = [0, 0];
+  let abs_x = Math.abs(x);
+  while(abs_x > 0){;
+    temp = abs_x % 10;
+    reverse = reverse * 10 + temp;
+    abs_x = Math.floor(abs_x/10);
   }
-  const rst = Number(str_x.join(""));
-  if (rst < 1 << 31 || rst > -((1 << 31) - 1)) return 0;
-  return rst;
+  if(reverse < (1 << 31) || reverse > -(1 << 31) + 1)
+    return 0;
+
+  if(x < 0)
+    reverse *= -1;
+  return reverse;
 };
