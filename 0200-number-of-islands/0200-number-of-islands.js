@@ -4,9 +4,12 @@
  */
 
 const numIslands = (grid) => {
+  if (!grid.length || !grid[0].length)
+    return 0;
   let ans = 0;
+  let [rl, cl] = [grid.length, grid[0].length];
   const dfs = (i, j) => {
-    if(i >= grid.length || i < 0 || j >= grid[0].length || j < 0 || grid[i][j] == '0') return;
+    if(i >= rl || i < 0 || j >= cl || j < 0 || grid[i][j] == '0') return;
     grid[i][j] = '0';
 
     dfs(i + 1, j);
